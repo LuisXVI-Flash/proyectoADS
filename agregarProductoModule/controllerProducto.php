@@ -9,9 +9,7 @@
         $formEditar->formEditarShow($producto);
 
     }else if(isset($_POST['Eliminar'])){
-        echo "Eliminar";
         $id=$_GET['id'];
-        echo " asasasasaa ".$id;
         include_once("../agregarProductoModule/formconfirmacion.php");
         $objConf = new confirmacion;
         $objConf->confirmacionShow($id);
