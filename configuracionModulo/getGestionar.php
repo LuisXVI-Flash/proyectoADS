@@ -2,6 +2,7 @@
 	require_once __DIR__."/controladorGestionarUsuario.php";
 
 	if(isset($_POST["verificar_usuario"])) {
+
 		$dni = (isset($_POST["dni"]) && !empty(trim($_POST["dni"]))) ? $_POST["dni"] : null;
 
 		if(isset($dni)) {
@@ -12,6 +13,7 @@
 	}
 
 	if(isset($_POST["contrasenia_usuario"])) {
+		//session_start();
 		$dni = (isset($_POST["dni"]) && !empty(trim($_POST["dni"]))) ? $_POST["dni"] : null;
 		$contrasenia_1 = (isset($_POST["contrasenia_1"]) && !empty(trim($_POST["contrasenia_1"]))) ? $_POST["contrasenia_1"] : null;
 		$contrasenia_2 = (isset($_POST["contrasenia_2"]) && !empty(trim($_POST["contrasenia_2"]))) ? $_POST["contrasenia_2"] : null;
@@ -19,7 +21,7 @@
 		if(isset($contrasenia_1) && isset($contrasenia_2) && isset($dni)) {
 
 			if($contrasenia_1 !== $contrasenia_2) {
-				session_start();
+				//session_start();
 				$_SESSION["mensaje"] = "La contraseña es incorrecta, por favor verifique"; 
 				$_SESSION["estado"] = true; 
 				header('Location: '.$_SERVER['HTTP_REFERER']);
@@ -38,7 +40,10 @@
 		exit;
 	}
 
-	if(isset($_POST["guardar_usuario"])) { // Botón
+	if(isset($_POST["guardar_usuario"])) {
+		
+		// Botón
+		
 
 		$cargo = (isset($_POST["cargo"]) && !empty(trim($_POST["cargo"]))) ? $_POST["cargo"] : null;
 		$dni = (isset($_POST["dni"]) && !empty(trim($_POST["dni"]))) ? $_POST["dni"] : null;

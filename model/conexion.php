@@ -8,7 +8,7 @@ class Conexion
 	{
 		if ( self::$instancia == null )
 		{
-			self::$instancia = new mysqli("localhost","root","","dibruesma2");
+			self::$instancia = new mysqli("localhost","root","12345678","dibruesma");
 		}
 
 		return self::$instancia;
@@ -21,7 +21,7 @@ class Conexion
 	}
 	private $conexion;
 	public function __construct(){
-        $this->conexion = mysqli_connect("localhost","root","","dibruesma2");
+        $this->conexion = mysqli_connect("localhost","root","12345678","dibruesma");
     }
 
     public function get(){
@@ -36,6 +36,6 @@ class Conexion
     }
 }
 
-$instancia=mysqli_connect("localhost","root","","dibruesma2");
+$instancia=mysqli_connect("localhost","root","12345678","dibruesma");
 
 ?>

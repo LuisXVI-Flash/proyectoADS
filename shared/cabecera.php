@@ -16,6 +16,9 @@
 
   </head>
 <body>
+<?php
+        if (isset($_SESSION)) {
+          ?>
   <nav class="navbar navbar-light" style="background-color: #51AFDA;">
   <div class="container-fluid">
   <ul class="nav justify-content-start">
@@ -42,15 +45,13 @@
       </ul>
   </div>
   </nav>
-      
-  <div class='container-fluid'>
-			      <div class='row'>
-			        <nav class='col-md-2 d-none d-md-block bg-light sidebar' style="background-color: #e3f2fd;">
-			          <div class='sidebar-sticky'>
-			            <ul class='nav flex-column'>
-			              <li class='nav-item'>
-			                <a class='nav-link active' href='../securityModule/getUsuario.php'>
-			                  <span data-feather='home'></span>
-			                  Inicio <span class='sr-only'>(current)</span>
-			                </a>
-			              </li>
+<div class="row">
+<div class="col-lg-3">
+<div class='container-fluid'>
+
+<nav class="nav flex-column">
+  <a class="nav-link active"href='../securityModule/getUsuario.php'>Inicio</a>
+
+  <?php
+        }
+        ?>

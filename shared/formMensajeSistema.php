@@ -14,6 +14,18 @@ class formMensajeSistema{
     <?php
         include_once("../shared/pie.php");
     }
+    public function formMensajeSistemaShow1($mensaje,$link,$value){
+        include 'cabecera.php';
+?>
+    <div>
+        <form action="<?php echo $link?>" method="post">
+            <p><center><?php echo strtoupper($mensaje)?></center> </p>
+            <p><center><input type="submit" name="<?php echo $value?>" class="btn btn-primary" value="Regresar" ></a></center></p>
+        </form>
+            
+    </div>
+<?php
+    }
 
     public function llamar_mensaje() {
         $this->formMensajeSistemaShow("Se ha detectado un acceso no autorizado","../index.php");

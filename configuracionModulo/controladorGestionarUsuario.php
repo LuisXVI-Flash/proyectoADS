@@ -1,10 +1,15 @@
 <?php  
-	include_once("../shared/formMensajeSistema.php");
-	(new formMensajeSistema())->accesso_denegado();
+	
+	
+	
 	require_once __DIR__."/../model/entityTrabajador.php";
+
+//session_destroy();
+		
 
 	class controladorGestionarUsuario
 	{
+		
 		private $trabajador, $cliente;
 
 		function __construct()
@@ -55,15 +60,6 @@
 			}
 		}
 
-		public function call_insertar_cliente($data)
-		{
-			$result = $this->cliente->registrarCliente($data);
-
-			$result = json_decode($result);
-			session_start();
-			$_SESSION["estado"] = $result->estado;
-			$_SESSION["mensaje"] = $result->mensaje;
-			// header("Location: ./formGestionar.php");
-		}
+	
 	}
 ?>

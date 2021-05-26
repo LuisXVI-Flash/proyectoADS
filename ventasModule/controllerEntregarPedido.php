@@ -6,13 +6,12 @@ session_start();
 
 
 
-if(isset($_POST["btnasignar"]) or isset($_POST["btnActualizar"])   or $view == "asignarordenonlinegg")
-
+if(isset($_POST["btnentregar"])  or $view == "entregarpedidogg") 
 {
    
-    include_once("formAsignarOrdenOnline.php");
-    $objForm = new formAsignarOrdenOnline;
-    $objForm -> formAsignarOrdenOnlineShow();
+    include_once("formEntregarPedido.php");
+    $objForm = new formEntregarPedido;
+    $objForm -> formEntregarPedidoShow();
 }
 
 

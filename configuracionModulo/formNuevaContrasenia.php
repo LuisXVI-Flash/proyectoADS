@@ -2,6 +2,9 @@
 if(!isset($_SESSION)) 
 { 
     session_start(); 
+	include_once("../securityModule/formBienvenida.php");
+        $obj = new formBienvenida();
+        $obj->formBienvenidaShow();
 }
 $stylesheet = true;
 
@@ -12,11 +15,8 @@ if (isset($_SESSION) && isset($_SESSION["idcargo"]) && isset($_SESSION["nombreCa
 	(new formMensajeSistema())->accesso_denegado();
 }
 
-include '../shared/cabecera.php'; 
 ?>
 
-  <div class="container">
-  
   	<?php if(isset($_SESSION["estado"]) && $_SESSION["mensaje"]): ?>
 	  	<div class="row">
 	  		<div class="col-12 p-0">
@@ -37,11 +37,11 @@ include '../shared/cabecera.php';
 	  	</div>
 	  <?php unset($_SESSION["estado"], $_SESSION["mensaje"]); ?>
 	  <?php endif; ?>
-		
-	  <div class="row row-form-content">
-	  	<div class="col-12 my-5">
-				<div class="card m-auto border border-2">
-						<h1 style="text-align: center;">Recuperación <br>de Contraseña</h1>
+
+	  <div class="col-lg-9"> 
+  <div class="container">
+	 <br> <div  class="card text-dark bg-light mb-3" style="width: 40rem;">
+						<div class="card-header fw-bold text-center">Recuperación de Contraseña</div>
 						<form action="../configuracionModulo/getGestionar.php" method="POST">
 							<div class="m-auto" style="width: 80%;">
 								<div>
@@ -58,18 +58,13 @@ include '../shared/cabecera.php';
 	              <input type="hidden" name="dni" value="<?php echo isset($_SESSION["dni"]) ? $_SESSION["dni"] : ""; ?>">
 
 	              <div class="form-row mt-3 d-flex justify-content-center">
-									<span class="btn btn-secondary" onclick="goBack()" style="width: 100%;">Volver Atrás</span>
-									<button type="submit" name="contrasenia_usuario" class="btn btn-success mb-2 mt-2" style="width: 100%;" >Cambiar contraseña</button>
-								</div>
+									<span type="button" class="btn btn-secondary me-md-2" onclick="goBack()">Volver Atrás</span>
+									<button type="submit" name="contrasenia_usuario" class="btn btn-primary">Cambiar contraseña</button>
+								</div><br>
 							</div>
 						</form>
-					</div>
-	  	</div>
-	  </div>
-
-			
 	</div>
-
+</div>
 	<script>
 	function goBack() {
 	  window.history.back();

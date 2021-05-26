@@ -80,7 +80,7 @@
 
         public function listarResumenes(){
             $con = Conexion::obtenerConexion();
-            $mesActual=date("d");
+            $mesActual=date("m");
             $sql = "SELECT * FROM resumenventa where MONTH(fecharesumen)=$mesActual";
             $resultado = mysqli_query($con,$sql);
             $datos = array();
@@ -100,7 +100,6 @@
             }
             return $datos;
         }
-
         public function listarbalance(){
             $con = Conexion::obtenerConexion();
             $mesActual=date("m");
@@ -110,5 +109,4 @@
             return mysqli_fetch_assoc($resultado);
         }
     }
-    
 ?>

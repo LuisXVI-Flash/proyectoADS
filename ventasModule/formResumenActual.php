@@ -1,6 +1,6 @@
 <?php
 class formResumenActual{
-	public function formResumenActualShow(){
+	public function formResumenActualShow($efe){
 		/*include_once "../vistas/head.php";
 		include_once "../vistas/body.php";*/
         include_once "controllerResumenVentas.php";
@@ -8,25 +8,41 @@ class formResumenActual{
         $obj = new formBienvenida();
         $obj->formBienvenidaShow();
 		?>
-		<a href="controllerResumenVentas.php?view=nuevoActual" class="btn btn-success">Agregar Resumen</a><hr><br>
-        <?php
-            include_once("../model/entityResumenventa.php");
-            $objArray = new entityResumenventa();
-            $efe=$objArray->listarResumenes();
-            
-        ?>
-		<table class='table'>
+	<div class="col-lg-9"> 
+  		<br>
+		  <div class="container">
+		  <div class="justify-content-md-center">
+
+		<form action="controllerResumenVentas.php" method="post">
+			<button type="submit" name="agregarR" class="btn btn-primary">Agregar Resumen</button>
+		</form> 
+        
+		<form action="controllerResumenVentas.php" method="post">
+			<br><button type="submit" name="generarPDF" class="btn btn-primary">Generar balance de ventas</button>
+		</form><br>
+
+		<form action="controllerResumenVentas.php" method="post">
+			<input type='submit' class ='btn btn-secondary' name="Regresar" value='Salir' >
+		</form>
+
+		
+		
+	</div>
+		<table class="table">
+		<thead>
 			<tr>
-				<th>IdResumen</th>
-                <th>Fecha de venta</th>
-				<th>Zona de venta</th>
-				<th>Productos Llevados</th>
-				<th>Productos Retornados</th>			
-				<th>Productos Perdidos</th>
-				<th>Total Ventas</th>
-                <th>Observaciones</th>
+				<th  scope="col">IdResumen</th>
+                <th  scope="col">Fecha de venta</th>
+				<th  scope="col">Zona de venta</th>
+				<th  scope="col">Productos Llevados</th>
+				<th  scope="col">Productos Retornados</th>			
+				<th  scope="col">Productos Perdidos</th>
+				<th  scope="col">Total Ventas</th>
+                <th  scope="col">Observaciones</th>
 				
 			</tr>
+			</thead>
+			<tbody>
 		<?php foreach ($efe as $efe) { ?>			
 			<tr>
 				<td><?php echo $efe->getIdresumenVenta(); ?></td>
@@ -40,14 +56,12 @@ class formResumenActual{
 				
 			<tr>					
 			<?php } ?>
+			</tbody>
 		</table>
 		<br>
-		<form action="controllerResumenVentas.php?view=pdf" method="post">
-			<button type="submit">Generar balance de ventas</button>
-		</form><br>
-
-		<a href="../ventasModule/getResumenVentas.php?view=editarResVen"><input type='button' class ='btn btn-danger' value='Salir' onClick='history.go(-1);'></a>
+	</div></div>
 		<?php
+		
 		include_once("../shared/pie.php");
 	}
 }
